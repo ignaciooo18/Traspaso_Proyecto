@@ -1,5 +1,3 @@
-// src/components/VeterinarioDetalle.jsx
-
 import React, { useState } from 'react';
 
 const VeterinarioDetalle = ({ vet, onVolver }) => {

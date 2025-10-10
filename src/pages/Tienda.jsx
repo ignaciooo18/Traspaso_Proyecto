@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { productosData } from '../data/Tienda'; // Importa los datos
-import Navbar from '../Components_General/Navbar';
+import { productosData } from '../data/Tienda'; 
+import MiNavbar from '../Components_General/MiNavbar';
 const Tienda = () => {
     const [productos, setProductos] = useState(productosData);
     const [productoSeleccionado, setProductoSeleccionado] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [suggestions, setSuggestions] = useState([]);
     const navItems = [
-        { label: "Explorar Mascotas", path: "/explorar" },
+        { label: "Explorar veterinarios", path: "/veterinarios" },
         { label: "Perfil", path: "/perfil" },
         { label: "Ver reseñas", path: "/reseñas" }
     ];
-    // Efecto para filtrar productos basado en el término de búsqueda
+
     useEffect(() => {
         if (searchTerm.length > 0) {
             const filtered = productosData.filter(producto =>
@@ -35,14 +35,14 @@ const Tienda = () => {
             producto.descripcion.toLowerCase().includes(searchTerm.toLowerCase())
         );
         setProductos(resultadosBusqueda);
-        setProductoSeleccionado(null); // Resetea la vista de detalle
-        setSuggestions([]); // Oculta las sugerencias
+        setProductoSeleccionado(null);
+        setSuggestions([]); 
     };
     
     const handleSuggestionClick = (producto) => {
         setSearchTerm(producto.nombre);
         setSuggestions([]);
-        setProductos([producto]); // Muestra solo el producto seleccionado
+        setProductos([producto]);
         setProductoSeleccionado(null);
     };
 
@@ -53,21 +53,19 @@ const Tienda = () => {
 
     const handleVolver = () => {
         setProductoSeleccionado(null);
-        setProductos(productosData); // Restaura la lista completa de productos
-        setSearchTerm(''); // Limpia la búsqueda
+        setProductos(productosData); 
+        setSearchTerm(''); 
     };
 
-    // Renderizado del componente
     return (
         <>
 
-            {<Navbar navItems={navItems} />}
-            {/* Aquí asumimos que el Navbar ya está siendo renderizado en otra parte */}
+            {<MiNavbar navItems={navItems} />}
             
             <main className="container py-5">
                 <h1 className="section-title text-center mb-4">Encuentra tu producto más barato</h1>
 
-                {/* Barra de búsqueda - Podrías moverla a tu Navbar si es necesario */}
+
                 <form className="d-flex justify-content-center mb-5" role="search" onSubmit={handleSearchSubmit}>
                     <div className="search-container position-relative w-50">
                         <input 
@@ -77,7 +75,7 @@ const Tienda = () => {
                             aria-label="buscar"
                             value={searchTerm}
                             onChange={handleSearchChange}
-                            onFocus={handleSearchChange} // Para mostrar sugerencias al hacer foco
+                            onFocus={handleSearchChange} 
                         />
                         {suggestions.length > 0 && (
                             <div className="list-group position-absolute w-100 mt-1" style={{ zIndex: 1000 }}>
@@ -98,7 +96,7 @@ const Tienda = () => {
                 </form>
 
                 {productoSeleccionado ? (
-                    // Vista de Detalle del Producto
+            
                     <div className="row justify-content-center">
                         <div className="card p-0 shadow-sm" style={{ maxWidth: '1800px' }}>
                             <div className="row g-0">
@@ -126,25 +124,25 @@ const Tienda = () => {
                         </div>
                     </div>
                 ) : (
-                    // Vista de Lista de Productos
-                    <div id="productos-container" className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        {productos.length > 0 ? (
-                            productos.map(producto => (
-                                <div className="col" key={producto.id}>
-                                    <div className="card h-100 shadow-sm">
-                                        <img src={producto.imagen} className="card-img-top" alt={producto.nombre} />
-                                        <div className="card-body text-center">
-                                            <h5 className="card-title">{producto.nombre}</h5>
-                                            <p className="card-text text-muted">{producto.descripcion}</p>
-                                            <button className="btn btn-primary" onClick={() => handleVerDetalle(producto.id)}>Ver Detalle</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))
-                        ) : (
-                            <p className="text-center w-100 fs-5 text-muted">No se encontraron productos.</p>
-                        )}
+                  
+                    <div className="row g-4">
+    {productos.length > 0 ? (
+        productos.map(producto => (
+            <div className="col-12 col-md-6 col-lg-4" key={producto.id}>
+                <div className="card h-100 shadow-sm">
+                    <img src={producto.imagen} className="card-img-top" alt={producto.nombre} />
+                    <div className="card-body d-flex flex-column text-center">
+                        <h5 className="card-title">{producto.nombre}</h5>
+                        <p className="card-text text-muted">{producto.descripcion}</p>
+                        <button className="btn btn-primary mt-auto" onClick={() => handleVerDetalle(producto.id)}>Ver Detalle</button>
                     </div>
+                </div>
+            </div>
+        ))
+    ) : (
+        <p className="text-center w-100 fs-5 text-muted">No se encontraron productos.</p>
+    )}
+</div>
                 )}
             </main>
         </>

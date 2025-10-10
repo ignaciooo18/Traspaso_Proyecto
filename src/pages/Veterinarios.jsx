@@ -1,41 +1,34 @@
 
 import React, { useState } from 'react';
-import Navbar from '../Components_General/Navbar';
+import MiNavbar from '../Components_General/MiNavbar';
 import VeterinarioLista from '../Components_vet/ListaVeterinarios';
 import VeterinarioDetalle from '../Components_vet/vetDetalle';
 import '../App.css'; 
 
 function Veterinarios() {
-    // --- ESTADO Y LÓGICA ---
-    
-    // Estado para saber qué veterinario está seleccionado. `null` muestra la lista.
+
     const [veterinarioSeleccionado, setVeterinarioSeleccionado] = useState(null);
 
-    // Datos para pasar al componente Navbar
     const navItems = [
         { label: "Explorar Mascotas", path: "/explorar" },
         { label: "Perfil", path: "/perfil" },
         { label: "Explorar Productos", path: "/tienda" }
     ];
 
-    // --- MANEJADORES DE EVENTOS ---
-
-    // Función para manejar la selección de un veterinario desde la lista
     const handleSeleccionarVeterinario = (vet) => {
         setVeterinarioSeleccionado(vet);
     };
 
-    // Función para volver a la lista desde la vista de detalle
+
     const handleVolverALista = () => {
         setVeterinarioSeleccionado(null);
     };
 
-    // --- RENDERIZADO DEL COMPONENTE ---
 
     return (
-        // Usamos un Fragment (<>) para agrupar el Navbar y el contenido principal
+
         <>
-            <Navbar navItems={navItems} />
+            <MiNavbar navItems={navItems} />
 
             <div className="container mt-5">
                 <header className="text-center mb-5">
