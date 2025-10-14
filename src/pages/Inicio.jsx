@@ -6,6 +6,7 @@ import Home from './home';
 import Tienda from './Tienda';
 import Veterinarios from './Veterinarios';
 import CerrarSesion from './CerrarSesion';
+import PaginaResenas from './Explorar';
 function App() {
  return(
   <div>
@@ -15,6 +16,7 @@ function App() {
       <Route path='/tienda'element={<Tienda/>}/>
       <Route path='/veterinarios'element={<Veterinarios/>}/>
       <Route path='/cerrar'element={<CerrarSesion/>}/>
+      <Route path='/explorar'element={<PaginaResenas/>}/>
     </Routes>
   </div>
  );
