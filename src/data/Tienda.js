@@ -1,0 +1,81 @@
+import { Link } from "react-router-dom";
+
+export const productosData = [
+        {
+                  id: 1,
+                nombre: 'Simparica Saronaler 40 mg (10 a 20 kg)',
+                descripcion: 'Lo más confiable y accesible para el cuidado de tu mascota.',
+                imagen: 'https://beta.cruzverde.cl/on/demandware.static/-/Sites-masterCatalog_Chile/default/dwef88cfa8/images/large/542179-simparica-saronaler-40-mg-1-comprimido-masticable.jpg',
+                 precios: [
+                { tienda: 'Farmacia Cruz Verde', precio: 1590, link :'https://www.cruzverde.cl/simparica-saronaler-40-mg-10-a-20-kg-1-comprimido-masticable/542179.html' },
+                { tienda: 'SuperZoo', precio: 1800, link :'https://www.superzoo.cl/perro/farmacia/farmacia-pipetas/simparica-antiparasitario-oral-masticable-para-perros-de-10-a-20-kg-3-comprimidos/3955.html' },
+                { tienda: 'Lider', precio: 16500 , link :'https://www.google.com/aclk?sa=L&ai=DChsSEwjSsuOypb6QAxXx6FwKHTtnJgUYACICCAEQGhoCY2U&ae=2&co=1&ase=2&gclid=CjwKCAjwx-zHBhBhEiwA7Kjq6yc1zDtgSJ8qYU2CUkreFEwURufx_68Nwe9E0WHlphEM5YSM-iH8DBoCVLAQAvD_BwE&cid=CAASQ-RoZhWtBj05s-vDv5k7Dwa8UaFkE41ECQnh-jKWyuhZFWOPgYp-we8U_A7rU_mYgU5g201ulZ8TsNK_q_Ze57Vwynk&cce=2&category=acrcp_v1_71&sig=AOD64_2mSXbHq60sWv4xTGeTNQ7vsBZc8g&ctype=5&q=&nis=4&ved=2ahUKEwivxNyypb6QAxV-B7kGHYWCCmUQ9aACKAB6BAgLEBY&adurl=' }
+                         ]
+        },
+                {
+                id: 2,
+                 nombre: 'Mebermic Comprimido Oral',
+                 descripcion: 'El mejor antiparasitario para el bienestar de tus mascotas.',
+                imagen: 'https://beta.cruzverde.cl/on/demandware.static/-/Sites-masterCatalog_Chile/default/dwff60b867/images/large/152252-1.jpg',
+                 precios: [
+                { tienda: 'Farmacia Cruz Verde', precio: 3990, link :'https://www.cruzverde.cl/search?refine%5B%5D=brand%3DMEBERMIC' },
+                 { tienda: 'Club de perros y gatos', precio: 4200 , link :'https://www.clubdeperrosygatos.cl/producto/merbemic-para-perros-y-gatos/?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBExaWlxb2piZmZVMEhBd1pBVQEe-f6WNHrxB5b1nrVoDTjKyy6qLnlDxH8Pymwf4OXMcRr0q1hPu5mwRvyrD40_aem_xe85RnxJ80C0Cb_KSo1GTg' },
+                 { tienda: 'Tus mascotas', precio: 4050 , link :'https://www.tusmascotas.cl/product/mebermic-comprimido-oral-perro-y-gato-1-pastilla/?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBExaWlxb2piZmZVMEhBd1pBVQEe-cUIVLDi4IeUFri7TIqSfEf4yVyL66i4hdHWZRpRw5kfOODuxTa7G9246-A_aem_xsvsx4HjLIwHP124kTYtRA' }
+         ]
+        },
+         {
+         id: 3,
+         nombre: 'Nexgard Afoxolaner 28,3 mg',
+        descripcion: 'Más barato y sabroso para el animal. Ideal para el control de pulgas y garrapatas.',
+         imagen: 'https://beta.cruzverde.cl/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw076d4116/images/large/386513-nexgard-afoxolaner-283-mg-3-comprimido-masticable-sabor-carne.jpg',
+         precios: [
+        { tienda: 'Farmacia Cruz Verde', precio: 16090 , link :'https://www.cruzverde.cl/p/nexgard-afoxolaner-28mg' },   
+         { tienda: 'Club de perros y gatos', precio: 19490 , link :'https://www.clubdeperrosygatos.cl/producto/nexgard-para-perros-41-a-10-kg-3-dosis-masticables/' },
+         { tienda: 'Mascotas Online', precio: 18900, link :'https://www.mascotasonline.cl/nexgard-28mg' }
+         ]   
+         },
+         {
+                 id: 4,
+                nombre: 'Cotonitos extra suaves 400 unidades',      
+                descripcion: 'Para malestar auditivo y cuidado de los oídos de tu mascota.',
+                imagen: 'https://beta.cruzverde.cl/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw82ca376f/images/large/296185-cotonitos-de-algodon-200-unidades-x2.jpg',
+                precios: [
+                { tienda: 'Farmacia Cruz Verde', precio: 2000, link :'https://www.google.com/aclk?sa=L&ai=DChsSEwiWzKrOpr6QAxXNU0gAHRKTEXMYACICCAEQBxoCY2U&co=1&ase=2&gclid=CjwKCAjwx-zHBhBhEiwA7Kjq63WuXVmIMxRw_pc9EfBdp5uADWWLCIY3fKv0VAo_os30umVeq4og0BoCGm0QAvD_BwE&cid=CAASQ-Ro-pEn45l1PQd-vwiWGgziePmZlDEHwyQa38rKaYwJrTiONdfIAOJACL4u_OUafidF0c6v4ZrT3t806IUMJGeIrqo&cce=2&category=acrcp_v1_32&sig=AOD64_2BOm5m8LFC8PCduyffyhjWSK0VsA&ctype=5&q=&nis=4&ved=2ahUKEwiFyaPOpr6QAxX_LbkGHXk2CTAQ9aACKAB6BAgLEB0&adurl=' },
+                { tienda: 'Maicao', precio: 2000 , link :'https://www.google.com/aclk?sa=L&ai=DChsSEwiWzKrOpr6QAxXNU0gAHRKTEXMYACICCAEQBBoCY2U&co=1&ase=2&gclid=CjwKCAjwx-zHBhBhEiwA7Kjq6yKbby-24zhgzeaPf2GHPNsJjMxOEmKeIVTiVh0i-KcL9SqAsdKubBoC5M0QAvD_BwE&cid=CAASQ-Ro-pEn45l1PQd-vwiWGgziePmZlDEHwyQa38rKaYwJrTiONdfIAOJACL4u_OUafidF0c6v4ZrT3t806IUMJGeIrqo&cce=2&category=acrcp_v1_32&sig=AOD64_1WdHiZEU39SJ-J6XwsNwqM9qcH9Q&ctype=5&q=&nis=4&ved=2ahUKEwiFyaPOpr6QAxX_LbkGHXk2CTAQ9aACKAB6BAgLEA8&adurl=' },
+                { tienda: 'Eco farmacias', precio: 1980, link :'https://www.ecofarmacias.cl/producto/pack-cotonitos-swiss-beauty-tips-400-unidades/?srsltid=AfmBOor6kzZNCDJTUQuCj7b22W_fEUFhtgaLTGpCITUEhSDUCRXLnaAaN7Y' }
+                 ]
+         },
+         {
+                 id: 5,
+                nombre: 'Regepipel Miconazol Nitrato 2,3 gr Shampoo',
+                descripcion: 'Shampoo para el cuidado de la piel de tu mascota. Lo más confiable.',
+                imagen: 'https://beta.cruzverde.cl/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw805f6a85/images/large/254465-regepipel-miconazol-nitrato-23-gr-shampoo-150-ml.jpg',
+                precios: [
+                { tienda: 'Farmacia Cruz Verde', precio: 6490 , link :'https://www.cruzverde.cl/p/regepipel-shampoo-miconazol' },
+                { tienda: 'SuperZoo', precio: 6700 , link :'https://www.superzoo.cl/products/regepipel-shampoo' },
+                 { tienda: 'Mascotas Online', precio: 6350, link :'https://www.mascotasonline.cl/regepipel-shampoo-150ml' }
+                 ]
+         },
+         {
+                id: 6,
+                nombre: 'Artri-Tabs Complex 60 Tabletas',
+                descripcion: 'Lo mejor para casa, ayuda a mejorar la salud articular de tu mascota.',
+                imagen: 'https://beta.cruzverde.cl/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw74b4e052/images/large/152538-1.jpg',
+                precios: [
+                { tienda: 'Farmacia Cruz Verde', precio: 4590 , link :'https://www.cruzverde.cl/p/artri-tabs-complex-60-tabletas' },
+                { tienda: 'SuperZoo', precio: 4800 , link :'httpss://www.superzoo.cl/products/artri-tabs-complex-60' },
+                { tienda: 'Mascotas Online', precio: 4650 , link :'https://www.mascotasonline.cl/artri-tabs-complex' }
+                ]
+        },
+         {
+                id: 7,
+                nombre: 'Nexgard Afoxolaner 11,3 mg',
+                descripcion: 'Lo más confiable y accesible para el control de parásitos externos.',
+                imagen: 'https://beta.cruzverde.cl/on/demandware.static/-/Sites-masterCatalog_Chile/default/dw137e572a/images/large/386503-nexgard-afoxolaner-113-mg-1-comprimido-masticable-sabor-carne.jpg',
+                 precios: [
+                 { tienda: 'Farmacia Cruz Verde', precio: 3990 , link :'https://www.cruzverde.cl/p/nexgard-afoxolaner-11mg' },
+                 { tienda: 'SuperZoo', precio: 4100 , link :'https://www.superzoo.cl/products/nexgard-11mg' },
+                { tienda: 'Mascotas Online', precio: 3850, link :'https://www.mascotasonline.cl/nexgard-11mg' }
+        ]       
+}
+ ];
