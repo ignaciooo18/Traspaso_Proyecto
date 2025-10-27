@@ -46,7 +46,15 @@ const VeterinarioDetalle = ({ vet, onVolver }) => {
         }
 
    
-        const nuevacita = { vetId: vet.id, date: fecha, time: hora };
+       const nuevacita = {
+        vetId: vet.id,
+        vetNombre: vet.nombre,
+        vetEspecialidad: vet.especialidad,
+         vetImagen: vet.imagen,
+        date: fecha,
+        time: hora
+        };
+
         existecita.push(nuevacita);
         localStorage.setItem('citas', JSON.stringify(existecita));
 

@@ -48,13 +48,14 @@ function PaginaResenas() {
               </Nav.Link>
             </Nav>
           </Col>
-
+          
           <Col md={9} lg={10} className="p-4">
             {vista === 'lista' ? (
               <ListaResenas reseñas={reseñas} />
             ) : (
-              <FormularioResena onAgregarReseña={agregarReseña} />
+              <FormularioResena  onGuardar={agregarReseña} />
             )}
+            
           </Col>
         </Row>
       </Container>

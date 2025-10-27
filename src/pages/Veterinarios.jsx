@@ -12,7 +12,8 @@ function Veterinarios() {
     const navItems = [
         { label: "Explorar Mascotas", path: "/explorar" },
         { label: "Perfil", path: "/perfil" },
-        { label: "Explorar Productos", path: "/tienda" }
+        { label: "Explorar Productos", path: "/tienda" },
+        { label: "Historial de citas", path: "/Historial" }
     ];
 
     const handleSeleccionarVeterinario = (vet) => {

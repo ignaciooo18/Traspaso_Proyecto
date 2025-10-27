@@ -13,9 +13,9 @@ export const predAnimalesData = [
         id: 2,
         nombre: 'Rex',
         dueño: 'Carlos',
-        tipo_perro: 'Bulldog Francés',
+        tipo_perro: 'Pastor aleman',
         doctor: 'Dr. Carlos Varela',
-        imagen: 'img/bulldog_frances.jpg',
+        imagen: 'img/Pastor_aleman.jpg',
         descripcion: 'Una excelente atención. La doctora López fue muy amable y resolvió todas mis dudas. Mi perro se sintió muy cómodo.',  
         rating: 5
         },
@@ -25,7 +25,7 @@ export const predAnimalesData = [
             dueño: 'María',
             tipo_perro: 'Poodle',
             doctor: 'Dra. Laura Ramírez',
-            imagen: 'img/poodlo.jpg',
+            imagen: 'img/poodle.jpg',
             descripcion: 'Muy buen doctor, muy profesional y muy amigable, recomendado al 100%.',
             rating: 5
         },

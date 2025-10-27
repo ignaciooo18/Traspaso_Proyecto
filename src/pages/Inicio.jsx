@@ -6,12 +6,8 @@ import Home from './home';
 import Tienda from './Tienda';
 import Veterinarios from './Veterinarios';
 import CerrarSesion from './CerrarSesion';
-import PerfilUsuario from './PerfilUsuario.jsx';
-import InicioSesion from './InicioSesion.jsx';
-import Registro from './Registro.jsx';
-
-
-
+import PaginaResenas from './Explorar';
+import HistorialCitas from './Historial';
 function App() {
  return(
   <div>
@@ -21,6 +17,8 @@ function App() {
       <Route path='/tienda'element={<Tienda/>}/>
       <Route path='/veterinarios'element={<Veterinarios/>}/>
       <Route path='/cerrar'element={<CerrarSesion/>}/>
+      <Route path='/explorar'element={<PaginaResenas/>}/>
+      <Route path='/Historial'element={<HistorialCitas/>}/>
     </Routes>
   </div>
  );
