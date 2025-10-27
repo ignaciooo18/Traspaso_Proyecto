@@ -56,6 +56,7 @@ const Tienda = () => {
         setProductos(productosData); 
         setSearchTerm(''); 
     };
+
     return (
         <>
 
@@ -113,15 +114,6 @@ const Tienda = () => {
                                                 <li key={index} className="list-group-item d-flex justify-content-between align-items-center mb-2 rounded shadow-sm">
                                                     <span>{p.tienda}:</span>
                                                     <span className="fs-5 fw-bold">${p.precio.toLocaleString('es-CL')} CLP</span>
-                                            <a 
-                                                href={p.link} 
-                                                className="btn btn-success mt-3" 
-                                                target="_blank" 
-                                                rel="noopener noreferrer"
-                                            >
-                                                <i className="bi bi-cart-fill me-2"></i>
-                                            Ir a la tienda
-                                            </a>
                                                 </li>
                                             ))}
                                         </ul>
