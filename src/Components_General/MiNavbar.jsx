@@ -9,7 +9,7 @@ function MiNavbar({ navItems = [] }) {
       <Container>
         
         <Navbar.Brand href="/"><img
-          src='../public/img/PetSocietylogo - copia.webp'
+          src='../img/PetSocietylogo - copia.webp'
           alt='imagen de mi pet society'
           width="70"
           height="50"
