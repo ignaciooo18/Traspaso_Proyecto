@@ -7,6 +7,7 @@ const IndexNavItems = [
     { label: "Explorar Mascotas", path: "/explorar" },
     { label: "Buscar Veterinario", path: "/veterinarios" },
     { label: "Explorar Productos", path: "/tienda" },
+    { label: "Perfil", path: "/perfil" },
 ];
     return(
         

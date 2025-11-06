@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 function CerrarSesion() {
     const navigate = useNavigate();
-    
     const handleGoToLogin = () => {
         navigate('/login');
     };

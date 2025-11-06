@@ -38,7 +38,6 @@ function Veterinarios() {
                 </header>
                 
                 <main>
-                    {/* Renderizado Condicional: Muestra la lista o el detalle basado en el estado */}
                     {veterinarioSeleccionado ? (
                         <VeterinarioDetalle 
                             vet={veterinarioSeleccionado} 

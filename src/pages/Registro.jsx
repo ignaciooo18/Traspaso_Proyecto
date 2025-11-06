@@ -11,7 +11,7 @@ export default function Registro() {
   });
   const [isHovered, setIsHovered] = useState(false);
   
-  const navigate = useNavigate(); // <--- AÑADIR ESTA LÍNEA
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { id, value } = e.target;

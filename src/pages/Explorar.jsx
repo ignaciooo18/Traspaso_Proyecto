@@ -2,25 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Nav } from 'react-bootstrap';
 
 import MiNavbar from '../Components_General/MiNavbar';
-import ListaResenas from '../ComponentsExplorar/Lista'; // (Debe ser un componente "tonto")
-import FormularioResena from '../ComponentsExplorar/Formulario'; // (Ya es un componente "tonto")
-// 1. Ya no necesitas los datos estáticos
-// import { predAnimalesData } from '../data/Explorar'; 
+import ListaResenas from '../ComponentsExplorar/Lista';
+import FormularioResena from '../ComponentsExplorar/Formulario';
+
 
 function PaginaResenas() {
   const [reseñas, setReseñas] = useState([]);
   const [vista, setVista] = useState('lista'); 
-  
-  // 2. Añadimos estados para Carga, Error y Edición
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [reseñaEditando, setReseñaEditando] = useState(null);
 
-  // 3. (LEER / GET) - Reemplazamos localStorage por fetch
   useEffect(() => {
     const fetchReseñas = async () => {
       try {
-        setLoading(true); // Empezamos a cargar
+        setLoading(true);
         const response = await fetch('http://demo5106183.mockable.io/resenas');
         if (!response.ok) {
           throw new Error('No se pudo conectar a la API');
@@ -30,20 +26,18 @@ function PaginaResenas() {
       } catch (err) {
         setError(err.message);
       } finally {
-        setLoading(false); // Terminamos de cargar
+        setLoading(false);
       }
     };
     fetchReseñas();
-  }, []); // Se ejecuta solo una vez al cargar
+  }, []);
 
-  // 4. (CREAR / POST y ACTUALIZAR / PUT)
-  // Esta función se pasa al FormularioResena
   const handleGuardarReseña = async (reseña) => {
-    const isEditing = !!reseñaEditando; // Verificamos si estamos editando
+    const isEditing = !!reseñaEditando;
     
     const url = isEditing
-      ? `http://demo5106183.mockable.io/resenas/${reseña.id}` // URL para PUT (actualizar)
-      : 'http://demo5106183.mockable.io/resenas';           // URL para POST (crear)
+      ? `http://demo5106183.mockable.io/resenas/${reseña.id}`
+      : 'http://demo5106183.mockable.io/resenas';
       
     const method = isEditing ? 'PUT' : 'POST';
 
@@ -61,28 +55,22 @@ function PaginaResenas() {
       const dataGuardada = await response.json();
 
       if (isEditing) {
-        // Actualizamos el estado local de React
         setReseñas((prev) =>
           prev.map(r => (r.id === dataGuardada.id ? dataGuardada : r))
         );
       } else {
-        // Añadimos la nueva reseña (devuelta por la API) al estado local
-        // La ponemos al inicio de la lista para que se vea primero
         setReseñas((prev) => [dataGuardada, ...prev]);
       }
       
     } catch (err) {
-      setError(err.message); // Sería bueno mostrar este error al usuario
+      setError(err.message);
       console.error(err);
     } finally {
-      // Ocultamos el formulario y limpiamos la edición
       setVista('lista');
       setReseñaEditando(null);
     }
   };
 
-  // 5. (BORRAR / DELETE)
-  // Esta función se pasa a ListaResenas
   const handleEliminar = async (id) => {
     const confirmar = window.confirm('¿Seguro que deseas eliminar esta reseña?');
     if (!confirmar) return;
@@ -94,7 +82,6 @@ function PaginaResenas() {
       if (!response.ok) {
         throw new Error('Error al eliminar la reseña');
       }
-      // Si la API tuvo éxito, actualizamos el estado local
       setReseñas((prev) => prev.filter(r => r.id !== id));
     } catch (err) {
       setError(err.message);
@@ -102,18 +89,15 @@ function PaginaResenas() {
     }
   };
   
-  // 6. (Handler para el botón de Editar)
-  // Esta función se pasa a ListaResenas
   const handleEditarClick = (reseña) => {
-    setReseñaEditando(reseña); // Guardamos la reseña a editar
-    setVista('formulario');    // Mostramos el formulario
+    setReseñaEditando(reseña);
+    setVista('formulario');
   };
 
-  // 7. Handlers para la navegación
   const handleNavClick = (nuevaVista) => {
     setVista(nuevaVista);
     if (nuevaVista === 'lista') {
-      setReseñaEditando(null); // Limpiamos si vuelve a la lista
+      setReseñaEditando(null);
     }
   };
 
@@ -155,7 +139,7 @@ function PaginaResenas() {
       ]} />
       <Container fluid>
         <Row>
-          {/* Sidebar */}
+
           <Col md={3} lg={2} className="bg-light vh-100 p-3">
             <h5 className="mb-3">Veterinarios</h5>
             <Nav className="flex-column">

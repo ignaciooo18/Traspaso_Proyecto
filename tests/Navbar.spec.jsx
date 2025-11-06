@@ -7,7 +7,8 @@ const navItemsMock = [
   { path: "/", label: "Inicio" },
   { path: "/tienda", label: "Tienda" },
   { path: "/veterinarios", label: "Veterinarios" },
-  { path: "/explorar", label: "Explorar" }
+  { path: "/explorar", label: "Explorar" },
+  { path: "/perfil", label: "Perfil" }
 ];
 
 const renderWithRouter = (component) => {
