@@ -11,7 +11,6 @@ export default function Registro() {
   });
   const [isHovered, setIsHovered] = useState(false);
   
-  // 2. Inicializa useNavigate
   const navigate = useNavigate(); // <--- AÑADIR ESTA LÍNEA
 
   const handleChange = (e) => {
@@ -25,22 +24,27 @@ export default function Registro() {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Validar que las contraseñas coincidan
     if (formData.password !== formData.password2) {
       alert('Las contraseñas no coinciden');
       return;
     }
+
+    if (!formData.correoElectronico.includes('@')) {
+      alert('Por favor ingresa un correo electrónico válido (debe contener @)');
+      return;
+    }
+
+    if (formData.password.length < 3) {
+      alert('La contraseña debe tener al menos 3 caracteres');
+      return;
+    }
     
     console.log('Datos del formulario:', formData);
-    alert('Registrando usuario...');
-    // Aquí, después de un registro exitoso, SÍ podrías redirigir:
-    // navigate('/login'); 
+    alert('Uusario registrado con éxito');
   };
 
-  // 3. Modifica tu función para usar navigate
   const handleLoginClick = () => {
-    // window.location.href = '/login'; // <--- QUITAR ESTA LÍNEA
-    navigate('/login'); // <--- AÑADIR ESTA LÍNEA
+    navigate('/login');
   };
 
   return (
@@ -66,7 +70,6 @@ export default function Registro() {
           margin: '2rem 1rem'
         }}
       >
-        {/* Logo o icono decorativo */}
         <div 
           className="mb-4"
           style={{
@@ -106,7 +109,6 @@ export default function Registro() {
           Únete a la comunidad de Pet Society
         </p>
 
-        {/* El formulario (sin cambios) */}
         <div className="w-100">
           <div className="mb-3">
             <label 
@@ -273,11 +275,10 @@ export default function Registro() {
           <span style={{ color: '#333333', fontSize: '0.9rem' }}>
             ¿Ya tienes una cuenta?{' '}
           </span>
-          {/* 4. Tu "<a>" ahora llama a handleLoginClick (que usa navigate) */}
           <a 
             href="#" 
             onClick={(e) => {
-              e.preventDefault(); // <-- Importante para que no recargue
+              e.preventDefault();
               handleLoginClick();
             }}
             style={{ 

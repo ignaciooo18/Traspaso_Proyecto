@@ -3,7 +3,6 @@ import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import Hero from "../src/Components_General/Hero";
 
-// para renderizar componentes que usan React Router
 const renderWithRouter = (component) => {
   return render(<BrowserRouter>{component}</BrowserRouter>);
 };

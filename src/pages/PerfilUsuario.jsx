@@ -31,7 +31,6 @@ export default function PerfilUsuario() {
     }}> 
       <MiNavbar navItems={navItems} />
 
-      {/* Header */}
       <header style={{ 
         color: '#333333', 
         textAlign: 'center', 

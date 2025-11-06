@@ -3,7 +3,6 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import MiNavbar from "../src/Components_General/MiNavbar";
 
-// Datos de prueba que simula los navItems que recibirá el componente
 const navItemsMock = [
   { path: "/", label: "Inicio" },
   { path: "/tienda", label: "Tienda" },
@@ -11,7 +10,6 @@ const navItemsMock = [
   { path: "/explorar", label: "Explorar" }
 ];
 
-//para renderizar componentes que usan React Router
 const renderWithRouter = (component) => {
   return render(<BrowserRouter>{component}</BrowserRouter>);
 };
