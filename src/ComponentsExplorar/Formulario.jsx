@@ -18,7 +18,7 @@ function FormularioResena({ reseñaInicial = null, onGuardar, onVolver }) {
   useEffect(() => {
     const fetchDoctores = async () => {
       try {
-        const response = await fetch('http://demo5106183.mockable.io/veterinarios');
+        const response = await fetch('http://34.198.178.4:8081/api/veterinarios');
         const data = await response.json();
         setListaDoctores(data);
       } catch (err) {
@@ -32,59 +32,69 @@ function FormularioResena({ reseñaInicial = null, onGuardar, onVolver }) {
   }, []); 
 
 
-  useEffect(() => {
-    if (reseñaInicial) {
-      setNombre(reseñaInicial.nombre || '');
-      setDueño(reseñaInicial.dueño || '');
-      setTipoAnimal(reseñaInicial.tipo_perro || '');
-      setDoctor(reseñaInicial.doctor || '');
-      setDescripcion(reseñaInicial.descripcion || '');
-      setRating(reseñaInicial.rating || 0);
-      setImagenPreview(reseñaInicial.imagen || null);
-      setImagen(null);
-    } else {
-      // (Limpieza - sigue igual)
-      setNombre('');
-      setDueño('');
-      setTipoAnimal('');
-      setDoctor('');
-      setDescripcion('');
-      setRating(0);
-      setImagen(null);
-      setImagenPreview(null);
-    }
-  }, [reseñaInicial]);
+useEffect(() => {
+  if (reseñaInicial) {
+    setNombre(reseñaInicial.nombreAnimal || '');
+    setDueño(reseñaInicial.nombreDueno || '');
+    setTipoAnimal(reseñaInicial.razaAnimal || '');
+    setDoctor(reseñaInicial.nombreVeterinario || '');
+    setDescripcion(reseñaInicial.comentario || '');
+    setRating(reseñaInicial.calificacion || 0);
+    setImagenPreview(reseñaInicial.imagenUrl || null);
+    setImagen(null);
+  } else {
+    setNombre('');
+    setDueño('');
+    setTipoAnimal('');
+    setDoctor('');
+    setDescripcion('');
+    setRating(0);
+    setImagen(null);
+    setImagenPreview(null);
+  }
+}, [reseñaInicial]);
 
   // Tu handleSubmit (sigue igual)
   const handleSubmit = (event) => {
-    event.preventDefault();
-    if (!nombre || !dueño || !tipoAnimal || !doctor || !descripcion || rating === 0) {
-      alert('Por favor, completa todos los campos (la imagen puede ser opcional).');
-      return;
-    }
-    const finishSaving = (imagenDataUrlFinal) => {
-      const reseñaAEnviar = {
-        id: reseñaInicial ? reseñaInicial.id : Date.now(), // Date.now() es para crear
-        nombre,
-        dueño,
-        tipo_perro: tipoAnimal,
-        doctor,
-        descripcion,
-        rating,
-        imagen: imagenDataUrlFinal || imagenPreview || null,
-      };
-      onGuardar(reseñaAEnviar);
+  event.preventDefault();
+  if (!nombre || !dueño || !tipoAnimal || !doctor || !descripcion || rating === 0) {
+    alert('Por favor, completa todos los campos (la imagen puede ser opcional).');
+    return;
+  }
+
+  const finishSaving = (imagenDataUrlFinal) => {
+    // Encontrar el ID del veterinario seleccionado
+    const doctorSeleccionado = listaDoctores.find(d => d.nombre === doctor);
+    
+    const reseñaAEnviar = {
+      veterinarioId: doctorSeleccionado?.id, // ID del veterinario
+      calificacion: rating, // 1-5
+      comentario: descripcion, // El texto del comentario
+      nombreUsuario: "usuario_frontend", // Puedes usar el nombre del usuario logueado
+      nombreDueno: dueño, // Nombre del dueño
+      nombreAnimal: nombre, // Nombre de la mascota
+      razaAnimal: tipoAnimal, // Raza
+      imagenUrl: imagenDataUrlFinal || imagenPreview || null, // URL de imagen
     };
-    if (imagen) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        finishSaving(reader.result);
-      };
-      reader.readAsDataURL(imagen);
-    } else {
-      finishSaving(imagenPreview);
+
+    // Si es edición, incluir el ID
+    if (reseñaInicial) {
+      reseñaAEnviar.id = reseñaInicial.id;
     }
+
+    onGuardar(reseñaAEnviar);
   };
+
+  if (imagen) {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      finishSaving(reader.result);
+    };
+    reader.readAsDataURL(imagen);
+  } else {
+    finishSaving(imagenPreview);
+  }
+};
     return (
     <section>
       <Row className="justify-content-center">

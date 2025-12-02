@@ -15,7 +15,7 @@ const VeterinarioLista = ({ onVeterinarioSelect }) => {
         const fetchVeterinarios = async () => {
             try {
                 
-                const response = await fetch('http://demo5106183.mockable.io/veterinarios');
+                const response = await fetch('http://34.198.178.4:8081/api/veterinarios');
                 if (!response.ok) {
                     throw new Error('No se pudieron cargar los datos de los veterinarios');
                 }

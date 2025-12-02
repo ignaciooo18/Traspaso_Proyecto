@@ -1,13 +1,21 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MiNavbar from '../Components_General/MiNavbar';
 import VeterinarioLista from '../Components_vet/ListaVeterinarios';
 import VeterinarioDetalle from '../Components_vet/vetDetalle';
 import '../App.css'; 
 
 function Veterinarios() {
-
+    const navigate = useNavigate();
     const [veterinarioSeleccionado, setVeterinarioSeleccionado] = useState(null);
+    
+    useEffect(() => {
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        if (!isLoggedIn) {
+            navigate('/');
+        }
+    }, [navigate]);
 
     const navItems = [
         { label: "Explorar Mascotas", path: "/explorar" },
@@ -29,7 +37,7 @@ function Veterinarios() {
     return (
 
         <>
-            <MiNavbar navItems={navItems} />
+            <MiNavbar navItems={navItems} isLoggedIn={true} />
 
             <div className="container mt-5">
                 <header className="text-center mb-5">

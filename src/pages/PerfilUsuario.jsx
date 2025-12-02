@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MiNavbar from '../Components_General/MiNavbar.jsx';
 
 export default function PerfilUsuario() {
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    if (!isLoggedIn) {
+      navigate('/');
+    }
+  }, [navigate]);
+  
   const usuario = {
     nombre: "María González",
     edad: 24,
@@ -29,7 +39,7 @@ export default function PerfilUsuario() {
       backgroundColor: '#c5f4e0',
       paddingBottom: '2rem'
     }}> 
-      <MiNavbar navItems={navItems} />
+      <MiNavbar navItems={navItems} isLoggedIn={true} />
 
       <header style={{ 
         color: '#333333', 

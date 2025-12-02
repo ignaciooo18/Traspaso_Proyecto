@@ -2,16 +2,26 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
-// 1. Importa Link de react-router-dom
 import { useNavigate, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-// 2. Recibe la nueva prop `isLoggedIn`
-function MiNavbar({ navItems = [], isLoggedIn }) {
+function MiNavbar({ navItems = [], isLoggedIn: isLoggedInProp }) {
   const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Verificar estado de sesión al cargar el componente
+  useEffect(() => {
+    const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    setIsLoggedIn(isLoggedInProp !== undefined ? isLoggedInProp : loggedIn);
+  }, [isLoggedInProp]);
 
   const handleLogout = () => {
-
-    navigate('/login');
+    // Limpiar localStorage
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userEmail');
+    
+    // Redirigir al inicio (página externa)
+    navigate('/');
   };
 
 
@@ -71,8 +81,5 @@ function MiNavbar({ navItems = [], isLoggedIn }) {
     </Navbar>
   );
 }
-MiNavbar.defaultProps = {
-  isLoggedIn: true
-};
 
 export default MiNavbar;

@@ -9,7 +9,7 @@ import CerrarSesion from './CerrarSesion';
 import PaginaResenas from './Explorar';
 import HistorialCitas from './Historial';
 import PerfilUsuario from './PerfilUsuario'
-import Registro from './Registro'
+import Registro from './Register';
 import Login from './InicioSesion'
 import Externo from './Externo';
 function App() {

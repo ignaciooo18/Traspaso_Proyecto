@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-// 1. Ya NO importamos 'productosData'
+import { useNavigate } from 'react-router-dom';
 import MiNavbar from '../Components_General/MiNavbar';
 
 const Tienda = () => {
+    const navigate = useNavigate();
     const [productos, setProductos] = useState([]);
     const [allProductos, setAllProductos] = useState([]);
     const [productoSeleccionado, setProductoSeleccionado] = useState(null);
@@ -10,6 +11,13 @@ const Tienda = () => {
     const [suggestions, setSuggestions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    
+    useEffect(() => {
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        if (!isLoggedIn) {
+            navigate('/');
+        }
+    }, [navigate]);
     
     const navItems = [
         { label: "Explorar veterinarios", path: "/veterinarios" },
@@ -92,7 +100,7 @@ const Tienda = () => {
 
     return (
         <>
-            {<MiNavbar navItems={navItems} />}
+            {<MiNavbar navItems={navItems} isLoggedIn={true} />}
             
             <main className="container py-5">
                 <h1 className="section-title text-center mb-4">Encuentra tu producto más barato</h1>

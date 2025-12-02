@@ -1,23 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Nav } from 'react-bootstrap';
-
+import { useNavigate } from 'react-router-dom';
 import MiNavbar from '../Components_General/MiNavbar';
 import ListaResenas from '../ComponentsExplorar/Lista';
 import FormularioResena from '../ComponentsExplorar/Formulario';
 
 
 function PaginaResenas() {
+  const navigate = useNavigate();
   const [reseñas, setReseñas] = useState([]);
   const [vista, setVista] = useState('lista'); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [reseñaEditando, setReseñaEditando] = useState(null);
+  
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    if (!isLoggedIn) {
+      navigate('/');
+    }
+  }, [navigate]);
 
   useEffect(() => {
     const fetchReseñas = async () => {
       try {
         setLoading(true);
-        const response = await fetch('http://demo5106183.mockable.io/resenas');
+        const response = await fetch('http://34.198.178.4:8081//resenas');
         if (!response.ok) {
           throw new Error('No se pudo conectar a la API');
         }
@@ -36,8 +44,8 @@ function PaginaResenas() {
     const isEditing = !!reseñaEditando;
     
     const url = isEditing
-      ? `http://demo5106183.mockable.io/resenas/${reseña.id}`
-      : 'http://demo5106183.mockable.io/resenas';
+      ? `http://34.198.178.4:8081/resenas/${reseña.id}`
+      : 'http://34.198.178.4:8081/api/resenas';
       
     const method = isEditing ? 'PUT' : 'POST';
 
@@ -76,7 +84,7 @@ function PaginaResenas() {
     if (!confirmar) return;
 
     try {
-      const response = await fetch(`http://demo5106183.mockable.io/resenas/${id}`, {
+      const response = await fetch(`http://34.198.178.4:8081/api/resenas/${id}`, {
         method: 'DELETE',
       });
       if (!response.ok) {
@@ -136,7 +144,7 @@ function PaginaResenas() {
         { label: "Explorar Mascotas", path: "/explorar" },
         { label: "Buscar Veterinario", path: "/veterinarios" },
         { label: "Explorar Productos", path: "/tienda" },
-      ]} />
+      ]} isLoggedIn={true} />
       <Container fluid>
         <Row>
 

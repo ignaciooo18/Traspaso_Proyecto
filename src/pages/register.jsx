@@ -21,7 +21,7 @@ export default function Registro() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (formData.password !== formData.password2) {
@@ -38,9 +38,41 @@ export default function Registro() {
       alert('La contraseña debe tener al menos 3 caracteres');
       return;
     }
-    
-    console.log('Datos del formulario:', formData);
-    alert('Usario registrado con éxito');
+
+    try {
+      const response = await fetch('http://44.199.81.141:8080/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nombre: formData.nombreCompleto,
+          email: formData.correoElectronico,
+          password: formData.password
+        })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        alert(errorData.message || 'Error al registrar usuario');
+        return;
+      }
+
+      const data = await response.json();
+      
+      // Guardar sesión en localStorage después del registro
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('userEmail', formData.correoElectronico);
+      if (data.token) {
+        localStorage.setItem('authToken', data.token);
+      }
+      
+      alert('Usuario registrado con éxito');
+      navigate('/inicio');
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error de conexión. Por favor intenta de nuevo.');
+    }
   };
 
   const handleLoginClick = () => {

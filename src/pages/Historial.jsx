@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, Button, Nav } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import MiNavbar from "../Components_General/MiNavbar";
 
 function PaginaHistorialCitas() {
+  const navigate = useNavigate();
   const [citas, setCitas] = useState([]);
 
   useEffect(() => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    if (!isLoggedIn) {
+      navigate('/');
+      return;
+    }
     const citasGuardadas = JSON.parse(localStorage.getItem("citas")) || [];
     setCitas(citasGuardadas);
-  }, []);
+  }, [navigate]);
 
   const eliminarCita = (index) => {
     if (window.confirm("¿Seguro que deseas eliminar esta cita?")) {
@@ -27,6 +34,7 @@ function PaginaHistorialCitas() {
           { label: "Explorar Productos", path: "/tienda" },
           { label: "Perfil", path: "/perfil" },
         ]}
+        isLoggedIn={true}
       />
 
       <Container fluid>

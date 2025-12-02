@@ -17,23 +17,53 @@ export default function Login() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Validación
-    if (formData.correoElectronico && formData.password) {
-      console.log('Datos del formulario:', formData);
-      alert('Sesión iniciada correctamente');
-
-     
-      navigate('/inicio');
-    } else {
-      alert('Por favor completa todos los campos');
-    }
-
+    // Validación del correo
     if (!formData.correoElectronico.includes('@')) {
       alert('Por favor ingresa un correo electrónico válido (debe contener @)');
       return;
+    }
+    
+    // Validación de campos completos
+    if (!formData.correoElectronico || !formData.password) {
+      alert('Por favor completa todos los campos');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://44.199.81.141:8080/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.correoElectronico,
+          password: formData.password
+        })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        alert(errorData.message || 'Error al iniciar sesión');
+        return;
+      }
+
+      const data = await response.json();
+      
+      // Guardar sesión en localStorage
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('userEmail', formData.correoElectronico);
+      if (data.token) {
+        localStorage.setItem('authToken', data.token);
+      }
+      
+      alert('Sesión iniciada correctamente');
+      navigate('/inicio');
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error de conexión. Por favor intenta de nuevo.');
     }
   };
   

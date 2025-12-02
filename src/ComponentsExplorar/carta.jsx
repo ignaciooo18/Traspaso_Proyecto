@@ -24,8 +24,8 @@ function CardResena({ reseña, onEdit, onDelete }) {
         
         <Card.Img
           variant="top"
-          src={reseña.imagen}
-          alt={`Foto de ${reseña.nombre}`}
+          src={reseña.imagenUrl}
+          alt={`Foto de ${reseña.nombreAnimal}`}
           style={{ height: '200px', objectFit: 'cover' }}
         />
         
@@ -33,18 +33,18 @@ function CardResena({ reseña, onEdit, onDelete }) {
         <Card.Body className="d-flex flex-column">
           
           <Card.Title className="poppins-font mb-2">
-            {reseña.nombre} 
-            <span className="text-muted fw-normal"> ({reseña.tipo_perro || 'N/A'})</span>
+            {reseña.nombreAnimal} 
+            <span className="text-muted fw-normal"> ({reseña.razaAnimal || 'N/A'})</span>
           </Card.Title>
 
           <div className="mb-3 open-sans-font">
             <div className="d-flex justify-content-between">
               <strong>Dueño:</strong>
-              <span>{reseña.dueño}</span>
+              <span>{reseña.nombreDueno}</span>
             </div>
             <div className="d-flex justify-content-between">
               <strong>Doctor:</strong>
-              <span>{reseña.doctor}</span>
+              <span>{reseña.nombreVeterinario}</span>
             </div>
           </div>
 
@@ -52,14 +52,14 @@ function CardResena({ reseña, onEdit, onDelete }) {
           <div className="d-flex align-items-center justify-content-between mb-3 open-sans-font">
             <strong>Calificación:</strong>
             <div className="ms-2">
-              <RatingEstrellas rating={reseña.rating} />
+              <RatingEstrellas rating={reseña.calificacion} />
             </div>
           </div>
 
           <hr className="my-1" />
         
           <p className="card-text text-muted fst-italic pt-2 flex-grow-1 mt-auto open-sans-font">
-            "{reseña.descripcion}"
+            "{reseña.comentario}"
           </p>
 
         </Card.Body>
