@@ -1,0 +1,492 @@
+{
+  "info": {
+    "_postman_id": "vet-api-collection",
+    "name": "Veterinarios API",
+    "description": "Collection para probar todos los endpoints del microservicio de veterinarios",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "VETERINARIOS",
+      "item": [
+        {
+          "name": "Crear Veterinario",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Dr. Test Veterinario\",\n  \"descripcion\": \"Veterinario de prueba con experiencia\",\n  \"especialidad\": \"Cirugía\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/veterinarios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "veterinarios"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener Todos los Veterinarios",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/veterinarios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "veterinarios"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener Veterinario por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/veterinarios/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "veterinarios",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar por Especialidad",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/veterinarios/especialidad/Cirugía",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "veterinarios",
+                "especialidad",
+                "Cirugía"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar por Nombre",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/veterinarios/buscar/Juan",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "veterinarios",
+                "buscar",
+                "Juan"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Actualizar Veterinario",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Dr. Test Veterinario\",\n  \"descripcion\": \"Veterinario actualizado\",\n  \"especialidad\": \"Medicina Interna\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/veterinarios/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "veterinarios",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Eliminar Veterinario",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/veterinarios/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "veterinarios",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "CITAS",
+      "item": [
+        {
+          "name": "Agendar Cita",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"veterinarioId\": 1,\n  \"nombrePaciente\": \"Carlos López\",\n  \"nombreMascota\": \"Firulais\",\n  \"especie\": \"Perro\",\n  \"fechaHora\": \"2024-01-20T10:30:00\",\n  \"razon\": \"Revisión de rutina\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/citas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "citas"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener Todas las Citas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/citas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "citas"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener Cita por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/citas/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "citas",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener Citas por Veterinario",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/citas/veterinario/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "citas",
+                "veterinario",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener Citas por Paciente",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/citas/paciente/Carlos López",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "citas",
+                "paciente",
+                "Carlos López"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener Citas por Estado",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/citas/estado/PROGRAMADA",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "citas",
+                "estado",
+                "PROGRAMADA"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Actualizar Cita",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fechaHora\": \"2024-01-20T11:00:00\",\n  \"razon\": \"Revisión actualizada\",\n  \"estado\": \"PROGRAMADA\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/citas/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "citas",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Cancelar Cita",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/citas/1/cancelar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "citas",
+                "1",
+                "cancelar"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Completar Cita",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/citas/1/completar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "citas",
+                "1",
+                "completar"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "RESEÑAS",
+      "item": [
+        {
+          "name": "Agregar Reseña",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"veterinarioId\": 1,\n  \"calificacion\": 5,\n  \"comentario\": \"Excelente atención y muy profesional\",\n  \"nombreUsuario\": \"Carlos López\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/resenas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "resenas"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener Todas las Reseñas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/resenas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "resenas"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener Reseña por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/resenas/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "resenas",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener Reseñas por Veterinario",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/resenas/veterinario/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "resenas",
+                "veterinario",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Eliminar Reseña",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/resenas/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "resenas",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
